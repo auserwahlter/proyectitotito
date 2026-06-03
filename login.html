@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luta e Dança</title>
+  <link rel="icon" href="images/imagen_2026-05-20_204940938.png" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="hero" aria-label="Bienvenida principal">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <a class="hero-logo-link" href="index.html" aria-label="Volver al inicio">
+            <img class="hero-logo" src="images/imagen_2026-05-20_204940938.png" alt="Logo Luta e Dança" />
+          </a>
+          <p class="eyebrow">LUTA E DANÇA</p>
+          <h1>Entrena, aprende y comparte grappling</h1>
+          <p>Un espacio para aprender, enseñar y evolucionar en el mundo del grappling con una experiencia diferente, limpia y potente.</p>
+        </div>
+
+        <div class="actions">
+          <button id="show-login" class="btn btn-primary">Iniciar sesión</button>
+          <button id="show-register" class="btn btn-secondary">Crear cuenta</button>
+        </div>
+
+        <div class="hero-stats" aria-label="Indicadores del club">
+          <div class="stat-card">
+            <span class="stat-value">1.200+</span>
+            <span class="stat-label">miembros</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">acceso</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">+50</span>
+            <span class="stat-label">instruccionale5s</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="wizard-section" class="wizard-section hidden" aria-label="Asistente de registro">
+      <div class="wizard-card">
+        <div class="wizard-header">
+          <div>
+            <p class="eyebrow" id="wizard-badge">Crea tu cuenta</p>
+            <h2 id="wizard-title">Elige tu camino</h2>
+            <p id="wizard-description">Selecciona si quieres entrenar como alumno o guiar como profesor.</p>
+          </div>
+          <button id="close-form" class="close-btn" aria-label="Cerrar asistente">✕</button>
+        </div>
+
+        <div class="wizard-steps" aria-label="Etapas del proceso">
+          <div class="step-pill active" data-step="role">
+            <span>1</span>
+            <span>Rol</span>
+          </div>
+          <div class="step-pill" data-step="details">
+            <span>2</span>
+            <span>Datos</span>
+          </div>
+          <div class="step-pill" data-step="payment">
+            <span>3</span>
+            <span>Pago</span>
+          </div>
+        </div>
+
+        <div id="role-step" class="wizard-step active">
+          <div class="role-grid">
+            <button class="role-option" data-role="alumno" type="button">
+              <span class="role-icon">🥋</span>
+              <span class="role-title">Alumno</span>
+              <span class="role-desc">Entrena técnicas, recibe feedback y avanza en tu camino de grappling con distintas herramientas a tu alcance.</span>
+            </button>
+
+            <button class="role-option" data-role="profesor" type="button">
+              <span class="role-icon">🥋</span>
+              <span class="role-title">Profesor</span>
+              <span class="role-desc">Crea instruccionales, comparte contenido y construye una comunidad de entrenamiento fuerte.</span>
+            </button>
+          </div>
+
+          <p class="helper-text">Tu rol define el tono de la experiencia y al crecimiento de nuestra comumidad.</p>
+        </div>
+
+        <div id="details-step" class="wizard-step hidden">
+          <div id="login-form" class="form-content hidden">
+            <div class="panel-header">
+              <h3>Iniciar sesión</h3>
+              <p>Accede a tu espacio de entrenamiento con tu email y contraseña.</p>
+            </div>
+
+            <label>
+              Correo electrónico
+              <input type="email" id="login-email" placeholder="tucorreo@ejemplo.com" />
+            </label>
+            <label>
+              Contraseña
+              <input type="password" id="login-password" placeholder="********" />
+            </label>
+            <div class="wizard-actions">
+              <button id="login-submit" class="btn btn-primary">Entrar</button>
+            </div>
+          </div>
+
+          <div id="register-form" class="form-content hidden">
+            <div class="role-summary-panel">
+              <div class="mini-badge">Rol seleccionado</div>
+              <div class="role-summary-content">
+                <div>
+                  <h3 id="selected-role-title">Alumno</h3>
+                  <p id="selected-role-copy">Entrena técnicas, recibe feedback y avanza en tu camino de grappling con distintas herramientas a tu alcance.</p>
+                </div>
+                <span class="summary-tag" id="selected-role-tag">Alumno</span>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <label>
+                Nombre
+                <input type="text" id="register-name" placeholder="Nombre completo" />
+              </label>
+              <label>
+                Correo electrónico
+                <input type="email" id="register-email" placeholder="tucorreo@ejemplo.com" />
+              </label>
+              <label>
+                Contraseña
+                <input type="password" id="register-password" placeholder="********" />
+              </label>
+              <label id="rank-field" class="hidden">
+                Rango de jiu-jitsu
+                <select id="rank-select">
+                  <option value="">Selecciona tu faixa</option>
+                  <option value="faixa branca">faixa branca⬜</option>
+                  <option value="faixa azul">faixa azul🟦</option>
+                  <option value="faixa roxa">faixa roxa🟪</option>
+                  <option value="faixa marro">faixa marro🟫</option>
+                  <option value="faixa preta">faixa preta ⬛</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="wizard-actions">
+              <button id="continue-to-payment" class="btn btn-primary">Continuar a pago</button>
+            </div>
+          </div>
+
+          <div id="teacher-pending-panel" class="teacher-pending-panel hidden">
+            <div class="pending-copy">
+              <p class="mini-badge">Cuenta en validación</p>
+              <h3>Tu cuenta está pendiente de validación</h3>
+              <p>El usuario fue creado y ahora está en revisión. Mientras tanto, no tendrás acceso completo hasta que se apruebe la validación.</p>
+            </div>
+
+            <ul class="pending-steps">
+              <li><span class="pending-dot">✓</span><span>Revisión de los datos del usuario.</span></li>
+              <li><span class="pending-dot">✓</span><span>Verificación del acceso antes de habilitar funciones.</span></li>
+              <li><span class="pending-dot">✓</span><span>Te avisaremos cuando la cuenta quede validada.</span></li>
+            </ul>
+
+            <div class="wizard-actions">
+              <button id="back-to-home" class="btn btn-secondary">Volver al inicio</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="payment-step" class="wizard-step hidden">
+          <div class="payment-card">
+            <div class="panel-header">
+              <h3>Método de pago</h3>
+              <p>Elige cómo quieres cubrir tu plan y confirma tu cuenta con elegancia.</p>
+            </div>
+
+            <div class="payment-options" aria-label="Métodos de pago">
+              <label class="payment-option active">
+                <input type="radio" name="payment-method" value="tarjeta" checked />
+                <span class="method-copy">
+                  <span class="method-title">Tarjeta</span>
+                  <span class="method-sub">Visa, MasterCard o Amex</span>
+                </span>
+                <span class="payment-chip">Rápido</span>
+              </label>
+
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="paypal" />
+                <span class="method-copy">
+                  <span class="method-title">PayPal</span>
+                  <span class="method-sub">Pago seguro con cuenta PayPal</span>
+                </span>
+                <span class="payment-chip">Seguro</span>
+              </label>
+
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="transferencia" />
+                <span class="method-copy">
+                  <span class="method-title">Transferencia</span>
+                  <span class="method-sub">Pago por banco o billetera digital</span>
+                </span>
+                <span class="payment-chip">Clásico</span>
+              </label>
+            </div>
+
+            <p class="helper-text">Puedes cambiar el método más adelante desde tu perfil. Los pagos se procesan al confirmar tu cuenta.</p>
+          </div>
+
+          <div class="wizard-actions">
+            <button id="back-to-details" class="btn btn-secondary">Volver</button>
+            <button id="register-submit" class="btn btn-primary">Crear cuenta</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="welcome-section" class="welcome-section hidden">
+      <div class="welcome-card">
+        <p class="eyebrow">Bienvenido</p>
+        <h2 id="welcome-heading"></h2>
+        <p id="welcome-text"></p>
+        <div id="welcome-meta" class="welcome-meta"></div>
+        <button id="reset" class="btn btn-primary">Volver al inicio</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

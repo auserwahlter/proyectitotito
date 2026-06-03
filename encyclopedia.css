@@ -1,0 +1,263 @@
+
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.25rem;
+  min-height: 100vh;
+  padding: 1.25rem;
+      z-index: 999999; /* Asegura que siempre esté por encima del gráfico */
+}
+
+.sidebar-card,
+.hero-card,
+.panel-card,
+.stat-card {
+  background: rgba(10, 10, 10, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+  border-radius: 28px;
+  backdrop-filter: blur(3px);
+      z-index: 999999; /* Asegura que siempre esté por encima del gráfico */
+}
+
+.sidebar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.2rem;
+      z-index: 999999; /* Asegura que siempre esté por encima del gráfico */
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 0.45rem;
+      z-index: 999999; /* Asegura que siempre esté por encima del gráfico */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.82rem 0.95rem;
+  border-radius: 999px;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.04);
+      z-index: 999999; /* Asegura que siempre esté por encima del gráfico */
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: rgba(185, 28, 28, 0.18);
+  border-color: rgba(248,113,113,0.4);
+  color: #fff;
+}
+
+.main-layout {
+  display: flex;
+  height: calc(100vh - 70px); /* Resta el tamaño aproximado del header */
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+.fixed-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999999; /* Asegura que siempre esté por encima del gráfico */
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid #b91c1c;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.fixed-btn:hover {
+    background: #b91c1c !important;
+    color: white !important;
+}
+.app-header {
+  height: 70px;
+  background-color: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#cy {
+  flex: 1;
+  height: 100%;
+  background-color: #040404b8; /* Fondo ultra oscuro interno para resaltar los nodos */
+}
+
+
+.sidebar {
+  width: 360px;
+  background: var(--bg-soft);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.panel-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.panel-card h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Componentes de Interfaz */
+.btn-primary {
+  background: var(--primary);
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  border: 1px solid transparent;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 15px var(--primary-soft);
+}
+
+.upload-zone input[type="file"] {
+  display: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--border-strong);
+}
+
+/* Filtros */
+.filter-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-filter {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0.25;
+  transition: all 0.2s;
+  background: #222;
+  color: #fff;
+}
+
+.btn-filter.active {
+  opacity: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.f-high.active { background: #b91c1c; border-color: #ef4444; }
+.f-medium.active { background: #d97706; border-color: #f59e0b; }  
+.f-low.active { background: #059669; border-color: #10b981; }      
+/* Ficha Técnica */
+#nodeTitle {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+  border-left: 4px solid var(--primary);
+  padding-left: 10px;
+}
+
+.placeholder-text {
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 30px 0;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.data-label {
+  color: var(--muted);
+}
+
+.data-val {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+#nodeDesc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--muted);
+  background: rgb(255, 255, 255);
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 18px;
+  border: 1px solid var(--border);
+}

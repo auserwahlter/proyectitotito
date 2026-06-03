@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJJ Training Game</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link rel="stylesheet" href="student-dashboard.css">
+
+</head>
+
+<body>
+  <main class="main-panel">
+  <div id="wrapper">
+
+      <div class="col">
+
+         <div id="position_wrapper">
+            <h2>Current Position: <span id="current_position">Blank</span></h2>
+            <p>Opponent's Current Position: <span id="current_position_opp">Blank</span></p>
+            <p>Position Modifiers: <span id="current_mods">None</span></p>
+         </div>
+
+
+         <div id="offense">
+              <h2>Possible Moves:</h2>
+              <div id="moves_list"></div>
+
+              <h2>Possible Position Modifiers:</h2>
+              <div id="mod_list"></div>
+
+              <input id="submit" type="button" value="Do It!"/>
+          </div>
+
+          <div id="defense">
+               <h2>Your opponent is attempting a move!</h2>
+               <h3>Opponent's Move: <span id="attempted_move_opp">Blank</span></h3>
+
+              <h3>Possible Defenses:</h3>
+              <div id="defense_list"></div>
+
+              <h3>Possible Actions:</h3>
+              <input id="submit_defend_yes" type="button" value="Defend"/>
+              <input id="submit_defend_no" type="button" value="Don't Defend"/>
+              <input id="submit_defend_random" type="button" value="Random"/>
+
+          </div>
+
+     </div>
+
+      <div class="col">
+         <div id="notes">
+             <h3>NOTES</h3>
+             <p class="note"><b>Position:</b> <span id="positionNote">none</span></p>
+             <p class="note"><b>Move:</b> <span id="moveNote">none</span></p>
+
+             <div style="display: flex; align-items: center;">
+                 <p class="note"><b>Videos:</b></p>
+                 <div id="video_toggle" title="Change size of videos"></div>
+             </div>
+
+             <div id="videoNote"></div>
+
+             <div id="linkNote">
+                 <p><b>Links:</b></p>
+             </div>
+
+             <p class="note"><b>Defenses:</b> <span id="defenseNote">none</span></p>
+         </div>
+      </div>
+
+ </div>
+
+ <div id="history"><b>History:</b> </div>
+
+ <div id="bottom_nav">
+    <div>
+        <p id="startFromSeated" class="restart button">Start new match<br> on the ground</p>
+        <p id="startFromRandom" class="restart button">Start somewhere<br> random</p>
+    </div>
+    <div id="posDropdown">
+        <select id="posList" onmousedown="this.value='';" onchange="reset(this.value);">
+            <option selected disabled>Pick a position to start from</option>
+        </select>
+    </div>
+
+    <div>
+
+       <div class="ai_wrapper">
+           <input type="checkbox" id="AIoffense" checked onclick="updateSettings(this)" />Enable AI Offense |
+           <div class="slidecontainer">
+              0<input type="range" min="0" max="100" value="50" class="slider" id="offRange">100
+            </div>
+       </div>
+       <div class="ai_wrapper">
+           <input type="checkbox" id="AIdefense" checked onclick="updateSettings(this)"/>Enable AI Defense
+           <div class="slidecontainer">
+              0<input type="range" min="0" max="100" value="50" class="slider" id="defRange">100
+            </div>
+       </div>
+
+    </div>
+
+    <!--<div>
+        <p id="forceAImove" class="button">Force AI move</p>
+    </div>-->
+
+    <div id="forceAImoveDropdown">
+        <select id="forceAImove" onmousedown="this.value='';" onchange="opponentAttemptMove(this.value);">
+            <option selected disabled>Force opponent move</option>
+        </select>
+    </div>
+
+
+</div>
+
+<div id="popup_small" class="cover">
+    <div class="inner">
+        <h3 class="title">Title</h3>
+        <p class="text">Text</p>
+        <button>OK</button>
+    </div>
+</div>
+
+<div id="popup_offense" class="cover">
+    <div class="inner">
+        <h3 class="title">Title</h3>
+        <p class="text">Text</p>
+        <button>OK</button>
+    </div>
+</div>
+
+<div id="notification">
+    <h3 class="title">Title</h3>
+    <p class="text">Text</p>
+</div>
+
+
+
+</main>
+   <script src="../puzzles/jquery-3.1.1.min.js"></script>
+   <script src="../puzzles/TweenMax-2.0.0.min.js"></script>
+   <script src="../puzzles/config.js"></script>
+   <script src="../puzzles/positionList.js"></script>
+   <script src="../puzzles/moves-submissions.js"></script>
+   <script src="../puzzles/moves-positionChanges.js"></script>
+   <script src="../puzzles/modifiers.js"></script>
+   <script src="../puzzles/ai.js"></script>
+   <script src="../puzzles/main.js"></script>
+
+</body>
+</html>

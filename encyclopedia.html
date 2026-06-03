@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJJ Mapa Táctico - Fullscreen</title>
+    <link rel="stylesheet" href="encyclopedia.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+</head>
+<body>
+    <div id="cy"></div>
+
+    <div id="detailCard" class="floating-card hidden">
+        <button id="closeCard" class="close-btn">✖</button>
+        <h2 id="nodeTitle">-</h2>
+        <div class="data-row"><span class="data-label">Tipo:</span> <span id="nodeType">-</span></div>
+        <div class="data-row"><span class="data-label">Riesgo:</span> <span id="nodeRisk" class="badge">-</span></div>
+        <div class="data-row"><span class="data-label">Energía:</span> <span id="nodeEnergy">-</span></div>
+        <p id="nodeDesc" class="desc-box"></p>
+    </div>
+<div id="detailCard" style="display: none;">
+    <button id="closeCard" onclick="ocultarTarjeta()" style="float:right; background:red; color:white; border:none; cursor:pointer;">X</button>
+    <div id="nodeTitle"></div>
+    <div id="nodeDesc"></div>
+</div>
+</main>
+    <script src="/encyclopedia/data.js"></script>
+    <script src="encyclopedia.js"></script>
+
+</body>
+</html>

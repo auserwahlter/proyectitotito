@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Moderador — Luta e Dança</title>
+  <link rel="icon" href="images/imagen_2026-05-20_204940938.png" type="image/x-icon" />
+  <link rel="stylesheet" href="student-dashboard.css" />
+  <link rel="stylesheet" href="profesor-dashboard.css" />
+  <link rel="stylesheet" href="moderador-dashboard.css" />
+</head>
+<body>
+<div class="dashboard-shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar-card">
+    <div class="brand-block">
+      <p class="eyebrow">LUTA E DANÇA</p>
+      <h1>Panel moderador</h1>
+      <p class="brand-copy">Control total de usuarios, contenido y reportes.</p>
+    </div>
+    <div class="profile-card">
+      <div class="avatar-ring">🛡️</div>
+      <div>
+        <p class="profile-label">Moderador</p>
+        <h2 id="mod-name">—</h2>
+        <p class="profile-meta" id="mod-meta">—</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" href="#" data-section="inicio">🏠 Inicio</a>
+      <a class="nav-item" href="#" data-section="usuarios">👥 Usuarios</a>
+      <a class="nav-item" href="#" data-section="videos">🎬 Videos</a>
+      <a class="nav-item" href="#" data-section="imagenes">🖼️ Imágenes</a>
+      <a class="nav-item" href="#" data-section="instruccionales">📚 Instruccionales</a>
+      <a class="nav-item" href="#" data-section="diagramas">🗺️ Diagramas</a>
+      <a class="nav-item" href="#" data-section="foro">💬 Foro</a>
+      <a class="nav-item" href="#" data-section="reportes">📊 Reportes</a>
+      <a class="nav-item" href="#" data-section="perfil">⚙️ Mi perfil</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="focus-chip mod-chip">🛡️ Acceso total</div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main-panel">
+    <section class="dashboard-topbar">
+      <div class="dashboard-topbar-copy">
+        <p class="eyebrow">Centro de control</p>
+        <h2 id="section-title">Panel de moderación</h2>
+      </div>
+      <button id="logout-btn" class="ghost-btn">Cerrar sesión</button>
+    </section>
+
+    <!-- ═══ INICIO ═══ -->
+    <div id="section-inicio" class="mod-section">
+      <section class="stats-grid">
+        <article class="stat-card large">
+          <p class="stat-label">Total usuarios</p>
+          <div class="big-metric" id="stat-total-usuarios">—</div>
+          <p class="stat-note">registrados en la plataforma</p>
+        </article>
+        <article class="stat-card"><p class="stat-label">Alumnos</p><div class="big-metric" id="stat-alumnos">—</div></article>
+        <article class="stat-card"><p class="stat-label">Profesores</p><div class="big-metric" id="stat-profesores">—</div></article>
+        <article class="stat-card"><p class="stat-label">Moderadores</p><div class="big-metric" id="stat-moderadores">—</div></article>
+        <article class="stat-card"><p class="stat-label">Videos</p><div class="big-metric" id="stat-videos">—</div></article>
+        <article class="stat-card"><p class="stat-label">Instruccionales</p><div class="big-metric" id="stat-instruccionales">—</div></article>
+        <article class="stat-card"><p class="stat-label">Posts foro</p><div class="big-metric" id="stat-posts">—</div></article>
+        <article class="stat-card"><p class="stat-label">Pendientes</p><div class="big-metric" id="stat-pendientes" style="color:#f0a500">—</div></article>
+      </section>
+      <section class="content-grid">
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Acceso rápido</p><h3>Acciones frecuentes</h3></div></div>
+          <div class="quick-actions-grid">
+            <button class="quick-action-btn" data-goto="usuarios"><span class="qa-icon">👥</span><span>Usuarios</span></button>
+            <button class="quick-action-btn" data-goto="videos"><span class="qa-icon">🎬</span><span>Videos</span></button>
+            <button class="quick-action-btn" data-goto="foro"><span class="qa-icon">💬</span><span>Foro</span></button>
+            <button class="quick-action-btn" data-goto="reportes"><span class="qa-icon">📊</span><span>Reportes</span></button>
+          </div>
+        </article>
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Requieren atención</p><h3>Usuarios pendientes</h3></div></div>
+          <div id="pendientes-list" class="media-list"><p class="empty-state-msg">Cargando…</p></div>
+        </article>
+      </section>
+    </div>
+
+    <!-- ═══ USUARIOS ═══ -->
+    <div id="section-usuarios" class="mod-section hidden">
+      <section class="panel-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">CRUD completo</p><h3>Gestión de usuarios</h3></div>
+          <div class="filter-row">
+            <input class="form-input small-input" type="text" id="search-usuario" placeholder="Buscar nombre o email…" />
+            <select class="form-input small-select" id="filter-rol">
+              <option value="">Todos los roles</option>
+              <option value="alumno">Alumno</option>
+              <option value="profesor">Profesor</option>
+              <option value="moderador">Moderador</option>
+            </select>
+            <select class="form-input small-select" id="filter-estado">
+              <option value="">Todos los estados</option>
+              <option value="activo">Activo</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="suspendido">Suspendido</option>
+            </select>
+            <button class="ghost-btn small-btn" id="filter-btn">Filtrar</button>
+            <button class="primary-btn small-btn" id="nuevo-usuario-btn">+ Nuevo</button>
+          </div>
+        </div>
+        <div id="usuarios-table-wrap" class="table-wrap"><p class="empty-state-msg">Cargando…</p></div>
+      </section>
+    </div>
+
+    <!-- ═══ VIDEOS ═══ -->
+    <div id="section-videos" class="mod-section hidden">
+      <section class="panel-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">CRUD</p><h3>Videos de profesores</h3></div>
+          <div class="filter-row">
+            <input class="form-input small-input" type="text" id="search-video" placeholder="Buscar título…" />
+            <select class="form-input small-select" id="filter-video-dificultad">
+              <option value="">Todas las dificultades</option>
+              <option value="basico">Básico</option>
+              <option value="intermedio">Intermedio</option>
+              <option value="avanzado">Avanzado</option>
+            </select>
+            <button class="ghost-btn small-btn" id="filter-video-btn">Filtrar</button>
+          </div>
+        </div>
+        <div id="videos-mod-list" class="media-list"><p class="empty-state-msg">Cargando…</p></div>
+      </section>
+    </div>
+
+    <!-- ═══ IMÁGENES ═══ -->
+    <div id="section-imagenes" class="mod-section hidden">
+      <section class="panel-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">CRUD</p><h3>Imágenes técnicas</h3></div>
+          <span class="panel-pill" id="imagenes-total-pill">0</span>
+        </div>
+        <div id="imagenes-mod-grid" class="imagenes-gallery"><p class="empty-state-msg">Cargando…</p></div>
+      </section>
+    </div>
+
+    <!-- ═══ INSTRUCCIONALES ═══ -->
+    <div id="section-instruccionales" class="mod-section hidden">
+      <section class="panel-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">CRUD</p><h3>Instruccionales</h3></div>
+          <span class="panel-pill" id="inst-total-pill">0</span>
+        </div>
+        <div id="inst-mod-list" class="media-list"><p class="empty-state-msg">Cargando…</p></div>
+      </section>
+    </div>
+
+    <!-- ═══ DIAGRAMAS ═══ -->
+    <div id="section-diagramas" class="mod-section hidden">
+      <section class="panel-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">CRUD</p><h3>Diagramas tácticos</h3></div>
+          <span class="panel-pill" id="diag-total-pill">0</span>
+        </div>
+        <div id="diag-mod-list" class="media-list"><p class="empty-state-msg">Cargando…</p></div>
+      </section>
+    </div>
+
+    <!-- ═══ FORO ═══ -->
+    <div id="section-foro" class="mod-section hidden">
+      <section class="panel-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">Moderación</p><h3>Publicaciones del foro</h3></div>
+          <div class="filter-row">
+            <input class="form-input small-input" type="text" id="search-post" placeholder="Buscar en posts…" />
+            <button class="ghost-btn small-btn" id="filter-post-btn">Buscar</button>
+          </div>
+        </div>
+        <div id="foro-mod-list" class="media-list"><p class="empty-state-msg">Cargando…</p></div>
+      </section>
+    </div>
+
+    <!-- ═══ REPORTES ═══ -->
+    <div id="section-reportes" class="mod-section hidden">
+      <section class="content-grid reportes-grid">
+
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Exportar datos</p><h3>Reporte de usuarios</h3></div></div>
+          <p class="report-desc">Exporta la lista completa de usuarios con rol, estado, rango y fecha de registro.</p>
+          <div class="filter-row" style="margin-top:.75rem">
+            <select class="form-input small-select" id="rep-usuarios-rol"><option value="">Todos los roles</option><option value="alumno">Alumno</option><option value="profesor">Profesor</option><option value="moderador">Moderador</option></select>
+            <select class="form-input small-select" id="rep-usuarios-estado"><option value="">Todos los estados</option><option value="activo">Activo</option><option value="pendiente">Pendiente</option><option value="suspendido">Suspendido</option></select>
+          </div>
+          <div class="form-actions" style="margin-top:.75rem">
+            <button class="ghost-btn" onclick="exportReport('usuarios','csv')">⬇️ CSV</button>
+            <button class="primary-btn" onclick="exportReport('usuarios','json')">⬇️ JSON</button>
+          </div>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Exportar datos</p><h3>Reporte de contenido</h3></div></div>
+          <p class="report-desc">Videos, imágenes e instruccionales subidos por profesores, con metadatos completos.</p>
+          <div class="form-actions" style="margin-top:.75rem">
+            <button class="ghost-btn" onclick="exportReport('contenido','csv')">⬇️ CSV</button>
+            <button class="primary-btn" onclick="exportReport('contenido','json')">⬇️ JSON</button>
+          </div>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Exportar datos</p><h3>Reporte del foro</h3></div></div>
+          <p class="report-desc">Todas las publicaciones del foro con autor, mensaje, likes y respuestas.</p>
+          <div class="form-actions" style="margin-top:.75rem">
+            <button class="ghost-btn" onclick="exportReport('foro','csv')">⬇️ CSV</button>
+            <button class="primary-btn" onclick="exportReport('foro','json')">⬇️ JSON</button>
+          </div>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Exportar datos</p><h3>Reporte general</h3></div></div>
+          <p class="report-desc">Resumen ejecutivo de toda la plataforma: métricas de usuarios, contenido y actividad.</p>
+          <div class="form-actions" style="margin-top:.75rem">
+            <button class="ghost-btn" onclick="exportReport('general','csv')">⬇️ CSV</button>
+            <button class="primary-btn" onclick="exportReport('general','json')">⬇️ JSON</button>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Vista previa del reporte -->
+      <section class="panel-card" style="margin-top:1rem" id="report-preview-card">
+        <div class="panel-header">
+          <div><p class="eyebrow">Vista previa</p><h3 id="report-preview-title">—</h3></div>
+          <button class="ghost-btn small-btn" id="report-download-btn" style="display:none">⬇️ Descargar</button>
+        </div>
+        <div id="report-preview-wrap" class="table-wrap">
+          <p class="empty-state-msg">Selecciona un reporte para previsualizarlo aquí.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══ PERFIL ═══ -->
+    <div id="section-perfil" class="mod-section hidden">
+      <section class="content-grid">
+        <article class="panel-card upload-card">
+          <div class="panel-header"><div><p class="eyebrow">Cuenta</p><h3>Editar mi perfil</h3></div></div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="perfil-nombre">Nombre completo</label>
+              <input class="form-input" type="text" id="perfil-nombre" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="perfil-email">Correo electrónico</label>
+              <input class="form-input" type="email" id="perfil-email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="perfil-password-actual">Contraseña actual</label>
+              <input class="form-input" type="password" id="perfil-password-actual" placeholder="Requerida para guardar" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="perfil-password-nueva">Nueva contraseña <span style="font-weight:400;text-transform:none">(opcional)</span></label>
+              <input class="form-input" type="password" id="perfil-password-nueva" placeholder="Dejar vacío para no cambiarla" />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="primary-btn" id="perfil-save-btn">💾 Guardar cambios</button>
+          </div>
+          <div id="perfil-feedback" class="feedback-msg hidden"></div>
+        </article>
+        <article class="panel-card">
+          <div class="panel-header"><div><p class="eyebrow">Información</p><h3>Datos de cuenta</h3></div></div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;padding:.25rem 0">
+            <div class="mini-stat"><span class="mini-label">Nombre</span><strong id="perfil-info-nombre">—</strong></div>
+            <div class="mini-stat"><span class="mini-label">Email</span><strong id="perfil-info-email">—</strong></div>
+            <div class="mini-stat"><span class="mini-label">Rol</span><strong><span class="badge badge-moderador">Moderador</span></strong></div>
+            <div class="mini-stat"><span class="mini-label">Estado</span><strong id="perfil-info-estado">—</strong></div>
+            <div class="mini-stat"><span class="mini-label">Desde</span><strong id="perfil-info-desde">—</strong></div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── MODAL USUARIO ── -->
+<div id="edit-modal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title">Editar usuario</h3>
+      <button class="ghost-btn small-btn" id="modal-close">✕</button>
+    </div>
+    <div class="form-grid">
+      <input type="hidden" id="edit-user-id" />
+      <div class="form-group">
+        <label class="form-label" for="edit-nombre">Nombre</label>
+        <input class="form-input" type="text" id="edit-nombre" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-email">Email</label>
+        <input class="form-input" type="email" id="edit-email" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-password">Nueva contraseña <span style="font-weight:400;text-transform:none">(opcional)</span></label>
+        <input class="form-input" type="password" id="edit-password" placeholder="Dejar vacío para no cambiar" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-rol">Rol</label>
+        <select class="form-input" id="edit-rol">
+          <option value="alumno">Alumno</option>
+          <option value="profesor">Profesor</option>
+          <option value="moderador">Moderador</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-estado">Estado</label>
+        <select class="form-input" id="edit-estado">
+          <option value="activo">Activo</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="suspendido">Suspendido</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-rango">Rango (alumnos)</label>
+        <select class="form-input" id="edit-rango">
+          <option value="">Sin rango</option>
+          <option value="faixa branca">Faixa branca</option>
+          <option value="faixa azul">Faixa azul</option>
+          <option value="faixa roxa">Faixa roxa</option>
+          <option value="faixa marrom">Faixa marrón</option>
+          <option value="faixa preta">Faixa preta</option>
+        </select>
+      </div>
+    </div>
+    <div id="edit-feedback" class="feedback-msg hidden"></div>
+    <div class="form-actions" style="margin-top:1rem">
+      <button class="ghost-btn" id="modal-cancel">Cancelar</button>
+      <button class="primary-btn" id="modal-save">💾 Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL NUEVO USUARIO ── -->
+<div id="new-user-modal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Crear usuario</h3>
+      <button class="ghost-btn small-btn" id="new-modal-close">✕</button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label" for="new-nombre">Nombre *</label>
+        <input class="form-input" type="text" id="new-nombre" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="new-email">Email *</label>
+        <input class="form-input" type="email" id="new-email" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="new-password">Contraseña *</label>
+        <input class="form-input" type="password" id="new-password" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="new-rol">Rol</label>
+        <select class="form-input" id="new-rol">
+          <option value="alumno">Alumno</option>
+          <option value="profesor">Profesor</option>
+          <option value="moderador">Moderador</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="new-estado">Estado inicial</label>
+        <select class="form-input" id="new-estado">
+          <option value="activo">Activo</option>
+          <option value="pendiente">Pendiente</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="new-rango">Rango (alumnos)</label>
+        <select class="form-input" id="new-rango">
+          <option value="">Sin rango</option>
+          <option value="faixa branca">Faixa branca</option>
+          <option value="faixa azul">Faixa azul</option>
+          <option value="faixa roxa">Faixa roxa</option>
+          <option value="faixa marrom">Faixa marrón</option>
+          <option value="faixa preta">Faixa preta</option>
+        </select>
+      </div>
+    </div>
+    <div id="new-user-feedback" class="feedback-msg hidden"></div>
+    <div class="form-actions" style="margin-top:1rem">
+      <button class="ghost-btn" id="new-modal-cancel">Cancelar</button>
+      <button class="primary-btn" id="new-modal-save">✅ Crear usuario</button>
+    </div>
+  </div>
+</div>
+
+<script src="moderador-dashboard.js"></script>
+</body>
+</html>
